@@ -38,7 +38,12 @@ export namespace SensorEvents {
     readonly level: number
   }
 
-  export type ISensorEvent = ITemperatureEvent | IPressureEvent | IHumidityEvent | ICurrentEvent | ITankLevel | IElectricEnergyEvent | ILevelReportEvent
+  export interface IAutopilotCommand extends ISensorEventBase {
+    readonly buttonId: number
+    readonly isLongPress: boolean
+  }
+
+  export type ISensorEvent = ITemperatureEvent | IPressureEvent | IHumidityEvent | ICurrentEvent | ITankLevel | IElectricEnergyEvent | ILevelReportEvent | IAutopilotCommand
 
 
 
@@ -73,4 +78,7 @@ export namespace SensorEvents {
     return (<ILevelReportEvent>event).tag === 'r';
   }
 
+  export function isAutopilotCommand(event: ISensorEvent): event is IAutopilotCommand {
+    return (<IAutopilotCommand>event).tag === 'a';
+  }
 }
