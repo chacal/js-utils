@@ -8,6 +8,7 @@ export namespace SensorEvents {
     readonly ts: string,
     readonly vcc?: number,
     readonly previousSampleTimeMicros?: number
+    readonly rssi?: number
   }
 
   export interface ITemperatureEvent extends ISensorEventBase {
