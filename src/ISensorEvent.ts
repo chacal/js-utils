@@ -49,7 +49,14 @@ export namespace SensorEvents {
     readonly course: number
   }
 
-  export type ISensorEvent = ITemperatureEvent | IPressureEvent | IHumidityEvent | ICurrentEvent | ITankLevel | IElectricEnergyEvent | ILevelReportEvent | IAutopilotCommand | IAutopilotState
+  export interface IPirEvent extends ISensorEventBase {
+    readonly motionDetected: boolean
+  }
+
+  export type ISensorEvent =
+    ITemperatureEvent | IPressureEvent | IHumidityEvent | ICurrentEvent | ITankLevel |
+    IElectricEnergyEvent | ILevelReportEvent | IAutopilotCommand | IAutopilotState |
+    IPirEvent
 
 
 
@@ -90,5 +97,9 @@ export namespace SensorEvents {
 
   export function isAutopilotState(event: ISensorEvent): event is IAutopilotState {
     return (<IAutopilotState>event).tag === 'b';
+  }
+
+  export function isPirEvent(event: ISensorEvent): event is IPirEvent {
+    return (<IPirEvent>event).tag === 'k';
   }
 }
