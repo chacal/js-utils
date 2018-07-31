@@ -9,7 +9,7 @@
   },
   "scripts": {
     "prepublish": "rm built/*; npm run tsc",
-    "tsc": "tsc"
+    "tsc": "./node_modules/.bin/tsc"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/chacal/js-utils#readme",
   "devDependencies": {
-    "typescript": "^2.3.4"
+    "typescript": "^2.9.2"
   }
 }
