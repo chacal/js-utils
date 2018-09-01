@@ -52,6 +52,7 @@ export namespace SensorEvents {
 
   export interface IPirEvent extends ISensorEventBase {
     readonly motionDetected: boolean
+    readonly messageId: number
   }
 
   export type ISensorEvent =
