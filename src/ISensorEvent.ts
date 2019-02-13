@@ -55,10 +55,14 @@ export namespace SensorEvents {
     readonly messageId: number
   }
 
+  export interface IThreadDisplayStatus extends ISensorEventBase {
+    readonly vcc: number
+  }
+
   export type ISensorEvent =
     ITemperatureEvent | IPressureEvent | IHumidityEvent | ICurrentEvent | ITankLevel |
     IElectricEnergyEvent | ILevelReportEvent | IAutopilotCommand | IAutopilotState |
-    IPirEvent
+    IPirEvent | IThreadDisplayStatus
 
 
 
@@ -103,5 +107,9 @@ export namespace SensorEvents {
 
   export function isPirEvent(event: ISensorEvent): event is IPirEvent {
     return (<IPirEvent>event).tag === 'k';
+  }
+
+  export function isThreadDisplayStatus(event: ISensorEvent): event is IThreadDisplayStatus {
+    return (<IThreadDisplayStatus>event).tag === 'd';
   }
 }
