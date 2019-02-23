@@ -55,8 +55,17 @@ export namespace SensorEvents {
     readonly messageId: number
   }
 
+  export interface IThreadParentInfo {
+    readonly rloc16: string,
+    readonly linkQualityIn: number,
+    readonly linkQualityOut: number,
+    readonly avgRssi: number,
+    readonly latestRssi: number
+  }
+
   export interface IThreadDisplayStatus extends ISensorEventBase {
     readonly vcc: number
+    readonly parent: IThreadParentInfo
   }
 
   export type ISensorEvent =
