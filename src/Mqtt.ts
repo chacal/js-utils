@@ -9,7 +9,7 @@ export namespace Mqtt {
 
   const MAX_DISCONNECT_COUNT = 20
 
-  export function startMqttClient<A>(brokerUrl: string, username: string, password: string): mqtt.Client {
+  export function startMqttClient<A>(brokerUrl: string, username?: string, password?: string): mqtt.Client {
     let disconnectCount = 0
 
     const client = mqtt.connect(brokerUrl, {username, password})
