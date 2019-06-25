@@ -25,9 +25,8 @@
     "typescript": "^2.9.2"
   },
   "dependencies": {
-    "@types/baconjs": "^0.7.33",
     "@types/node": "^8.10.23",
-    "baconjs": "^2.0.7",
+    "baconjs": "^3.0.3",
     "coap": "^0.23.1",
     "mqtt": "^2.18.3"
   }
