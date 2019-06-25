@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/chacal/js-utils#readme",
   "devDependencies": {
-    "typescript": "^2.9.2"
+    "typescript": "^3.5.2"
   },
   "dependencies": {
     "@types/node": "^8.10.23",
