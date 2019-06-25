@@ -5,7 +5,7 @@ import { IncomingMessage, OutgoingMessage } from 'coap'
 export namespace Coap {
   export function getJson(url: Url): Promise<IncomingMessage> {
     return new Promise((resolve, reject) => {
-      const req = coap.request(url.toString())
+      const req = coap.request(url.href)
       req.setOption('Accept', 'application/json')
       sendAndHandleResponse(req, resolve, reject)
     })
@@ -17,7 +17,7 @@ export namespace Coap {
         hostname: url.hostname,
         method: 'POST',
         pathname: url.pathname,
-        query: url.query.toString(),
+        query: url.query ? url.query.toString() : '',
         confirmable
       })
       req.setOption('Content-Format', 'application/json')
