@@ -12,6 +12,14 @@ export namespace Coap {
   }
 
   export function postJson(url: Url, payload: Object, confirmable: boolean = true): Promise<IncomingMessage> {
+    return postData(url, JSON.stringify(payload), 'application/json', confirmable)
+  }
+
+  export function postOctetStream(url: Url, payload: Buffer, confirmable: boolean = true): Promise<IncomingMessage> {
+    return postData(url, payload, 'application/octet-stream', confirmable)
+  }
+
+  function postData(url: Url, data: any, contentFormat: string, confirmable: boolean = true): Promise<IncomingMessage> {
     return new Promise((resolve, reject) => {
       const req = coap.request({
         hostname: url.hostname,
@@ -20,8 +28,8 @@ export namespace Coap {
         query: url.query ? url.query.toString() : '',
         confirmable
       })
-      req.setOption('Content-Format', 'application/json')
-      req.write(JSON.stringify(payload))
+      req.setOption('Content-Format', contentFormat)
+      req.write(data)
       sendAndHandleResponse(req, resolve, reject)
     })
   }
