@@ -32,7 +32,7 @@ export namespace CanvasRenderUtils {
 
       // Loop pixels (= 4 byte blocks) in the 8 pixel block
       for (let j = 0; j < 32; j += 4) {
-        if (data.data[i + j] !== 255 || data.data[i + j + 1] !== 255 || data.data[i + j + 2] !== 255) {
+        if (data.data[i + j] < 150 || data.data[i + j + 1] < 150 || data.data[i + j + 2] < 150) {
           // Pixel has some other color than white -> interpret as black -> set corresponding bit to 1 in binaryImageByte
           binaryImageByte += 1
         }
