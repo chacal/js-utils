@@ -68,10 +68,13 @@ export namespace SensorEvents {
     readonly parent: IThreadParentInfo
   }
 
+  export interface IImpulseEvent extends ISensorEventBase {
+  }
+
   export type ISensorEvent =
     ITemperatureEvent | IPressureEvent | IHumidityEvent | ICurrentEvent | ITankLevel |
     IElectricEnergyEvent | ILevelReportEvent | IAutopilotCommand | IAutopilotState |
-    IPirEvent | IThreadDisplayStatus
+    IPirEvent | IThreadDisplayStatus | IImpulseEvent
 
 
 
@@ -120,5 +123,9 @@ export namespace SensorEvents {
 
   export function isThreadDisplayStatus(event: ISensorEvent): event is IThreadDisplayStatus {
     return (<IThreadDisplayStatus>event).tag === 'd';
+  }
+
+  export function isImpulseEvent(event: ISensorEvent): event is IImpulseEvent {
+    return (<IImpulseEvent>event).tag === 'i';
   }
 }
