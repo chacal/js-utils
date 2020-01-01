@@ -1,6 +1,6 @@
 import coap = require('coap')
 import { Url } from 'url'
-import { IncomingMessage, OutgoingMessage } from 'coap'
+import { IncomingMessage, OutgoingMessage, TimingParams, updateTiming as coapUpdateTiming } from 'coap'
 
 export namespace Coap {
   export function getJson(url: Url): Promise<IncomingMessage> {
@@ -17,6 +17,10 @@ export namespace Coap {
 
   export function postOctetStream(url: Url, payload: Buffer, confirmable: boolean = true): Promise<IncomingMessage> {
     return postData(url, payload, 'application/octet-stream', confirmable)
+  }
+
+  export function updateTiming(params: TimingParams) {
+    coapUpdateTiming(params)
   }
 
   function postData(url: Url, data: any, contentFormat: string, confirmable: boolean = true): Promise<IncomingMessage> {
