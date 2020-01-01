@@ -1,15 +1,15 @@
 declare module 'coap' {
   import { Writable } from 'stream'
 
-  interface IncomingMessage {
+  export interface IncomingMessage {
     payload: Buffer
   }
 
-  interface OutgoingMessage extends Writable {
+  export interface OutgoingMessage extends Writable {
     setOption(name: string, value: string): void
   }
 
-  interface RequestParams {
+  export interface RequestParams {
     hostname: string,
     method: string,
     pathname: string,
@@ -17,7 +17,7 @@ declare module 'coap' {
     confirmable: boolean
   }
 
-  interface TimingParams {
+  export interface TimingParams {
     ackTimeout?: number // seconds
     ackRandomFactor?: number
     maxRetransmit?: number
