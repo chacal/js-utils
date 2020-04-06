@@ -2,9 +2,11 @@ export namespace SensorEvents {
 //
 // Interfaces
 //
+  type Tag = 't' | 'p' | 'h' | 'm' | 'c' | 'w' | 'e' | 'r' | 'a' | 'b' | 'k' | 'd' | 'i'
+
   export interface ISensorEventBase {
     readonly instance: string,
-    readonly tag: string,
+    readonly tag: Tag,
     readonly ts: string,
     readonly vcc?: number,
     readonly previousSampleTimeMicros?: number
@@ -12,48 +14,62 @@ export namespace SensorEvents {
   }
 
   export interface ITemperatureEvent extends ISensorEventBase {
+    tag: 't'
     readonly temperature: number
   }
 
   export interface IPressureEvent extends ISensorEventBase {
+    tag: 'p'
     readonly pressure: number
   }
 
   export interface IHumidityEvent extends ISensorEventBase {
+    tag: 'h'
     readonly humidity: number
   }
 
-  export interface IEnvironmentEvent extends IPressureEvent, ITemperatureEvent, IHumidityEvent {
+  export interface IEnvironmentEvent extends ISensorEventBase {
+    tag: 'm'
+    readonly temperature: number
+    readonly pressure: number
+    readonly humidity: number
   }
 
   export interface ICurrentEvent extends ISensorEventBase {
+    tag: 'c'
     readonly current: number
     readonly messageCounter?: number
   }
 
   export interface ITankLevel extends ISensorEventBase {
+    tag: 'w'
     readonly tankLevel: number
   }
 
   export interface IElectricEnergyEvent extends ISensorEventBase {
+    tag: 'e'
     readonly ampHours: number
   }
 
   export interface ILevelReportEvent extends ISensorEventBase {
+    tag: 'r'
     readonly level: number
   }
 
   export interface IAutopilotCommand extends ISensorEventBase {
+    tag: 'a'
     readonly buttonId: number
     readonly isLongPress: boolean
   }
 
   export interface IAutopilotState extends ISensorEventBase {
+    tag: 'b'
     readonly enabled: boolean
     readonly course: number
   }
 
   export interface IPirEvent extends ISensorEventBase {
+    tag: 'k'
     readonly motionDetected: boolean
     readonly messageId: number
   }
@@ -67,15 +83,17 @@ export namespace SensorEvents {
   }
 
   export interface IThreadDisplayStatus extends ISensorEventBase {
+    tag: 'd'
     readonly vcc: number
     readonly parent: IThreadParentInfo
   }
 
   export interface IImpulseEvent extends ISensorEventBase {
+    tag: 'i'
   }
 
   export type ISensorEvent =
-    ITemperatureEvent | IPressureEvent | IHumidityEvent | ICurrentEvent | ITankLevel |
+    ITemperatureEvent | IPressureEvent | IHumidityEvent | IEnvironmentEvent | ICurrentEvent | ITankLevel |
     IElectricEnergyEvent | ILevelReportEvent | IAutopilotCommand | IAutopilotState |
     IPirEvent | IThreadDisplayStatus | IImpulseEvent
 
@@ -96,7 +114,7 @@ export namespace SensorEvents {
   }
 
   export function isEnvironment(event: ISensorEvent): event is IEnvironmentEvent {
-    return (<IEnvironmentEvent>event).tag === 'v'
+    return (<IEnvironmentEvent>event).tag === 'm'
   }
 
   export function isCurrent(event: ISensorEvent): event is ICurrentEvent {
