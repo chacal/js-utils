@@ -80,59 +80,58 @@ export namespace SensorEvents {
     IPirEvent | IThreadDisplayStatus | IImpulseEvent
 
 
-
 //
 // Type guards
 //
   export function isTemperature(event: ISensorEvent): event is ITemperatureEvent {
-    return (<ITemperatureEvent>event).tag === 't';
+    return (<ITemperatureEvent>event).tag === 't'
   }
 
   export function isPressure(event: ISensorEvent): event is IPressureEvent {
-    return (<IPressureEvent>event).tag === 'p';
+    return (<IPressureEvent>event).tag === 'p'
   }
 
   export function isHumidity(event: ISensorEvent): event is IHumidityEvent {
-    return (<IHumidityEvent>event).tag === 'h';
+    return (<IHumidityEvent>event).tag === 'h'
   }
 
   export function isEnvironment(event: ISensorEvent): event is IEnvironmentEvent {
-    return (<IEnvironmentEvent>event).tag === 'v';
+    return (<IEnvironmentEvent>event).tag === 'v'
   }
 
   export function isCurrent(event: ISensorEvent): event is ICurrentEvent {
-    return (<ICurrentEvent>event).tag === 'c';
+    return (<ICurrentEvent>event).tag === 'c'
   }
 
   export function isTankLevel(event: ISensorEvent): event is ITankLevel {
-    return (<ITankLevel>event).tag === 'w';
+    return (<ITankLevel>event).tag === 'w'
   }
 
   export function isElectricEnergy(event: ISensorEvent): event is IElectricEnergyEvent {
-    return (<IElectricEnergyEvent>event).tag === 'e';
+    return (<IElectricEnergyEvent>event).tag === 'e'
   }
 
   export function isLevelReport(event: ISensorEvent): event is ILevelReportEvent {
-    return (<ILevelReportEvent>event).tag === 'r';
+    return (<ILevelReportEvent>event).tag === 'r'
   }
 
   export function isAutopilotCommand(event: ISensorEvent): event is IAutopilotCommand {
-    return (<IAutopilotCommand>event).tag === 'a';
+    return (<IAutopilotCommand>event).tag === 'a'
   }
 
   export function isAutopilotState(event: ISensorEvent): event is IAutopilotState {
-    return (<IAutopilotState>event).tag === 'b';
+    return (<IAutopilotState>event).tag === 'b'
   }
 
   export function isPirEvent(event: ISensorEvent): event is IPirEvent {
-    return (<IPirEvent>event).tag === 'k';
+    return (<IPirEvent>event).tag === 'k'
   }
 
   export function isThreadDisplayStatus(event: ISensorEvent): event is IThreadDisplayStatus {
-    return (<IThreadDisplayStatus>event).tag === 'd';
+    return (<IThreadDisplayStatus>event).tag === 'd'
   }
 
   export function isImpulseEvent(event: ISensorEvent): event is IImpulseEvent {
-    return (<IImpulseEvent>event).tag === 'i';
+    return (<IImpulseEvent>event).tag === 'i'
   }
 }
