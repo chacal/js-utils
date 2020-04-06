@@ -22,12 +22,12 @@
   },
   "homepage": "https://github.com/chacal/js-utils#readme",
   "devDependencies": {
-    "typescript": "^3.5.2"
+    "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@types/node": "^10.14.13",
+    "@types/node": "^12.12.34",
     "coap": "^0.23.1",
-    "mqtt": "^2.18.3"
+    "mqtt": "^3.0.0"
   },
   "peerDependencies": {
     "baconjs": "^3.0.9",
