@@ -23,6 +23,9 @@ export namespace SensorEvents {
     readonly humidity: number
   }
 
+  export interface IEnvironmentEvent extends IPressureEvent, ITemperatureEvent, IHumidityEvent {
+  }
+
   export interface ICurrentEvent extends ISensorEventBase {
     readonly current: number
     readonly messageCounter?: number
@@ -91,6 +94,10 @@ export namespace SensorEvents {
 
   export function isHumidity(event: ISensorEvent): event is IHumidityEvent {
     return (<IHumidityEvent>event).tag === 'h';
+  }
+
+  export function isEnvironment(event: ISensorEvent): event is IEnvironmentEvent {
+    return (<IEnvironmentEvent>event).tag === 'v';
   }
 
   export function isCurrent(event: ISensorEvent): event is ICurrentEvent {
