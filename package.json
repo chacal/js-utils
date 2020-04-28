@@ -26,11 +26,8 @@
   },
   "dependencies": {
     "@types/node": "^12.12.34",
+    "baconjs": "^3.0.13",
     "coap": "^0.23.1",
     "mqtt": "^3.0.0"
-  },
-  "peerDependencies": {
-    "baconjs": "^3.0.9",
-    "canvas": "^2.6.0"
   }
 }
