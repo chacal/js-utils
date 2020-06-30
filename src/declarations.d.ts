@@ -7,6 +7,7 @@ declare module 'coap' {
 
   export interface OutgoingMessage extends Writable {
     setOption(name: string, value: string): void
+    setOption(name: string, value: Buffer): void
   }
 
   export interface RequestParams {
