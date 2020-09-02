@@ -60,6 +60,7 @@ export namespace SensorEvents {
     tag: 'a'
     readonly buttonId: number
     readonly isLongPress: boolean
+    readonly messageCounter: number
   }
 
   export interface IAutopilotState extends ISensorEventBase {
