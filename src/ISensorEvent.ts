@@ -38,7 +38,7 @@ export namespace SensorEvents {
   export interface ICurrentEvent extends ISensorEventBase {
     tag: 'c'
     readonly current: number
-    readonly messageCounter?: number
+    readonly messageCounter: number
   }
 
   export interface ITankLevel extends ISensorEventBase {
