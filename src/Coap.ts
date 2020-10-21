@@ -2,7 +2,7 @@ import coap = require('coap')
 import { Url } from 'url'
 import { IncomingMessage, OutgoingMessage, RequestParams, TimingParams, updateTiming as coapUpdateTiming } from 'coap'
 
-const MAX_COAP_PAYLOAD_SIZE = 1280
+const MAX_COAP_PAYLOAD_SIZE = 1250
 const BLOCK1_BLOCK_SIZE = 1024
 const BLOCK1_SIZE_EXPONENT = 6  // Block size == 2^(4 + size exponent)
 
