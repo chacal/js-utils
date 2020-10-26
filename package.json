@@ -1,6 +1,6 @@
 {
   "name": "@chacal/js-utils",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "description": "",
   "main": "built/index.js",
   "types": "built/index.d.ts",
