@@ -2,9 +2,9 @@ import coap = require('coap')
 import { Url } from 'url'
 import { IncomingMessage, OutgoingMessage, RequestParams, TimingParams, updateTiming as coapUpdateTiming } from 'coap'
 
-const MAX_COAP_PAYLOAD_SIZE = 1200
-const BLOCK1_BLOCK_SIZE = 256
-const BLOCK1_SIZE_EXPONENT = 4  // Block size == 2^(4 + size exponent)
+const MAX_COAP_PAYLOAD_SIZE = 1170
+const BLOCK1_BLOCK_SIZE = 1024
+const BLOCK1_SIZE_EXPONENT = 6  // Block size == 2^(4 + size exponent)
 
 export namespace Coap {
   export function getJson(url: Url): Promise<IncomingMessage> {
