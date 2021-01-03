@@ -10,9 +10,9 @@ export namespace NetworkDisplay {
   export type DisplayStatus = { instance: string, tag: DisplayTag, vcc: number, ts: string, parent: IThreadParentInfo }
   export type StatusStream = EventStream<DisplayStatus>
 
-  export function statusesWithInterval(displayAddress: string, intervalMs: number): StatusStream {
+  export function statusesWithInterval(displayAddress: string, intervalMs: number, requestPath: string = '/api/status'): StatusStream {
     return once('').concat(interval(intervalMs, ''))
-      .flatMapLatest(() => fromPromise(Coap.getJson(parse(`coap://[${displayAddress}]/api/status`))))
+      .flatMapLatest(() => fromPromise(Coap.getJson(parse(`coap://[${displayAddress}]${requestPath}`))))
       .map(res => JSON.parse(res.payload.toString()))
       .map(ds => ({
         instance: ds.instance,
