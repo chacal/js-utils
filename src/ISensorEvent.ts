@@ -2,7 +2,7 @@ export namespace SensorEvents {
 //
 // Interfaces
 //
-  type Tag = 't' | 'p' | 'h' | 'm' | 'c' | 'w' | 'e' | 'r' | 'a' | 'b' | 'k' | 'd' | 'i'
+  type Tag = 't' | 'p' | 'h' | 'm' | 'c' | 'w' | 'e' | 'r' | 'a' | 'b' | 'k' | 'd' | 'i' | 'v'
 
   export interface ISensorEventBase {
     readonly instance: string,
@@ -93,10 +93,15 @@ export namespace SensorEvents {
     tag: 'i'
   }
 
+  export interface IVoltageEvent extends ISensorEventBase {
+    tag: 'v'
+    readonly vcc: number
+  }
+
   export type ISensorEvent =
     ITemperatureEvent | IPressureEvent | IHumidityEvent | IEnvironmentEvent | ICurrentEvent | ITankLevel |
     IElectricEnergyEvent | ILevelReportEvent | IAutopilotCommand | IAutopilotState |
-    IPirEvent | IThreadDisplayStatus | IImpulseEvent
+    IPirEvent | IThreadDisplayStatus | IImpulseEvent | IVoltageEvent
 
 
 //
@@ -152,5 +157,9 @@ export namespace SensorEvents {
 
   export function isImpulseEvent(event: ISensorEvent): event is IImpulseEvent {
     return (<IImpulseEvent>event).tag === 'i'
+  }
+
+  export function isVoltageEvent(event: ISensorEvent): event is IVoltageEvent {
+    return (<IVoltageEvent>event).tag === 'v'
   }
 }
