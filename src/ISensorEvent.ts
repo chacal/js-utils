@@ -48,7 +48,7 @@ export namespace SensorEvents {
 
   export interface IElectricEnergyEvent extends ISensorEventBase {
     tag: 'e'
-    readonly ampHours: number
+    readonly energyAmount: number
   }
 
   export interface ILevelReportEvent extends ISensorEventBase {
